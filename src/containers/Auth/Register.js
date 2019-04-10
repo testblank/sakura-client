@@ -123,8 +123,6 @@ class Register extends Component {
         password
       });
       const loggedInfo = this.props.result.toJS();
-      console.log('1111')
-      console.log(this.props.toJS());
 
       storage.set("loggedInfo", loggedInfo);
       UserActions.setLoggedInfo(loggedInfo);

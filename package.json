@@ -1,5 +1,5 @@
 {
-  "name": "heurm-client",
+  "name": "sakura-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -124,8 +124,8 @@
       "node"
     ],
     "watchPlugins": [
-      "/Users/testblank/Documents/heurm-client/node_modules/jest-watch-typeahead/filename.js",
-      "/Users/testblank/Documents/heurm-client/node_modules/jest-watch-typeahead/testname.js"
+      "/Users/testblank/Documents/sakura-client/node_modules/jest-watch-typeahead/filename.js",
+      "/Users/testblank/Documents/sakura-client/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "babel": {

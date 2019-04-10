@@ -28,7 +28,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "heurm-client",
+    "name": "sakura-client",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
