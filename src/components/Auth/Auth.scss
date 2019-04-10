@@ -1,0 +1,106 @@
+@import "main.scss";
+
+.AuthWrapperPosition {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.AuthWrapperBox {
+  width: 500px;
+  background: $sakura3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  @include media("480") {
+    width: 350px;
+  }
+}
+.AuthWrapperLogo {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.AuthWrapperLink {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  color: white;
+  @include media("480") {
+    font-size: 1.8rem;
+  }
+  &:hover {
+    color: #fff0f6;
+  }
+}
+.AuthWrapperContents {
+  background: white;
+  padding: 2rem;
+  height: auto;
+}
+.AuthContentTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: $sakura3;
+}
+.InputWithLabelWrapper {
+  & + & {
+    margin-top: 0.5rem;
+  }
+}
+.InputWithLabelLabel {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: $sakura3;
+}
+.InputWithLabelInput {
+  width: 100%;
+  border: 1px solid $sakura2;
+  color: $sakura3;
+  line-height: 2.5rem;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+  &::placeholder {
+    color: $sakura2;
+  }
+}
+.AuthButtonWrapper {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
+  background: $sakura3;
+  color: white;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  height: 42px;
+  transition: 0.2s all;
+  &:hover {
+    background: $sakura2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
+  }
+}
+.RightAlignedLinkWrapper {
+  margin-top: 1rem;
+  text-align: right;
+}
+.RightAlignedLinkLink {
+  color: $sakura2;
+  &:hover {
+    color: $sakura3;
+  }
+}
+.AuthErrorWrapper{
+  margin: 1rem 0;
+  filter: brightness(2);
+  color: $red8;
+  font-weight: 500;
+  text-align: center;
+  animation-name: shake;
+  animation-fill-mode: forwards;
+  animation-duration: .5s;
+}

@@ -1,0 +1,57 @@
+@import "~include-media/dist/include-media";
+
+$breakpoints: (
+  "320": (
+    max-width: 320px
+  ),
+  "mobile": (
+    max-width: 360px
+  ),
+  "480": (
+    max-width: 480px
+  ),
+  "tablet": (
+    max-width: 767px
+  ),
+  "1007": (
+    max-width: 1007px
+  ),
+  "pc": (
+    max-width: 1200px
+  ),
+  "onlypc": (
+    min-width: 1201px
+  ),
+  "1400": (
+    max-width: 1400px
+  ),
+  "1600": (
+    max-width: 1600px
+  ),
+  "h1000": (
+    min-height: 1000px
+  )
+);
+
+// 반응형 매니저
+// @param {String} $breakpoint - 브레이크포인트
+// @requires $breakpoints
+
+@mixin media($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+          + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}

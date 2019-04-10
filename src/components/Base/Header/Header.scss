@@ -1,0 +1,60 @@
+@import "main.scss";
+
+.HeaderPosition {
+  display: inline-block;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.HeaderBackground {
+  background: $sakura3;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  height: 4rem;
+}
+.HeaderContents {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  width: 100%;
+  @media screen and (max-width: 976px) {
+    padding: 0 1rem;
+  }
+}
+.HeaderLogo {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bolder;
+}
+.HeaderSpacer {
+  flex: 1;
+}
+.LoginButton {
+  font-weight: 600;
+  border: 1px solid white;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    background: $sakura4;
+    color: $sakura0;
+  }
+}
+.ProfileButtonWrapper {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  cursor: pointer;
+}
+.ProfileButtonThumbnail {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
