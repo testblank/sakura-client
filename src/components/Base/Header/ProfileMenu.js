@@ -4,7 +4,7 @@ import './Header.scss'
 const ProfileMenu = () => {
   return (
     <div className="ProfileMenuWrapper">
-      thisismenu
+      board profile
     </div>
   )
 }

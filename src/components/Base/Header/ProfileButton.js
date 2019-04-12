@@ -10,16 +10,16 @@ const ProfileButton = ({
   menu
 }) => {
   return (
-    <div className="ProfileButtonWrapper">
-      <div className="ProfileButtonLink" onClick={menuToggle}>
-        <img
-          className="ProfileButtonThumbnail"
-          src={thumbnail}
-          alt={username}
-        />
+      <div className="ProfileButtonWrapper">
+        <div className="ProfileButtonLink" onClick={menuToggle}>
+          <img
+            className="ProfileButtonThumbnail"
+            src={thumbnail}
+            alt={username}
+          />
+        </div>
+        {isOpened ? menu : null}
       </div>
-      {isOpened ? menu : null}
-    </div>
   );
 };
 
