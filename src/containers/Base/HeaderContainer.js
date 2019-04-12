@@ -29,7 +29,7 @@ class HeaderContainer extends Component {
           <ProfileButton
             username={user.getIn(["loggedInfo", "username"])}
             thumbnail={user.getIn(["loggedInfo", "thumbnail"])}
-            onClick={handleLogout}
+            // onClick={handleLogout}
           />
         ) : (
           <LoginButton />

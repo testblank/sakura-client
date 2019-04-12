@@ -1,0 +1,71 @@
+@import "main.scss";
+
+.HomeWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.HomeWrapperPictures {
+  max-width: 1200px;
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include media("480"){
+    padding: 2rem;
+  }
+}
+.PicturesLoading{
+  display: felx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.PictureWrapper {
+  width: 320px;
+  height: 300px;
+  background: white;
+  box-shadow: 0 5px 8px rgba(252, 194, 215, 0.16),
+    0 5px 8px rgba(252, 194, 215, 0.23);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.PictureImgWrapper {
+  max-width: 320px;
+  max-height: 320px;
+  object-fit: cover;
+  object-position: center;
+  margin: 1rem;
+}
+.PictureImg {
+  width: 100%;
+  height: 100%;
+}
+.PictureTags {
+  padding: 0 1.2rem;
+  font-size: 1rem;
+  color: $sakura4;
+}
+.MoreButton {
+  // border: 1px solid black;
+  background: $sakura3;
+  color: white;
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 1.5rem 4rem;
+  box-shadow: 0 5px 8px rgba(240, 101, 149, 0.16),
+    0 5px 8px rgba(240, 101, 149, 0.23);
+  &:hover {
+    cursor: pointer;
+    background: $sakura4;
+    transition: 0.2s ease all;
+  }
+}
