@@ -1,17 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const ProfileButton = ({ username, thumbnail, onClick}) => {
+const ProfileButton = ({
+  username,
+  thumbnail,
+  logout,
+  menuToggle,
+  isOpened,
+  menu
+}) => {
   return (
-    <div className="ProfileButtonWrapper" onClick={onClick}>
-      <Link className="ProfileButtonLink" to="">
+    <div className="ProfileButtonWrapper">
+      <div className="ProfileButtonLink" onClick={menuToggle}>
         <img
           className="ProfileButtonThumbnail"
           src={thumbnail}
           alt={username}
         />
-      </Link>
+      </div>
+      {isOpened ? menu : null}
     </div>
   );
 };

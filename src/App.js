@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "redux/modules/user";
 
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button";
+
 class App extends Component {
   initializeUserInfo = async () => {
     const loggedInfo = storage.get("loggedInfo");
@@ -28,11 +30,22 @@ class App extends Component {
   };
 
   render() {
+    const btnStyle = {
+      borderRadius: "50%",
+      background: "rgba(230,73,128,0.4)",
+      fill: "white",
+      width: "3rem",
+      height: "3rem",
+      padding: ".5rem",
+      paddingBottom: "1rem",
+      bottom: '3.5rem'
+    };
     return (
       <div>
         <HeaderContainer />
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
+        <ScrollUpButton style={btnStyle} />
       </div>
     );
   }

@@ -1,9 +1,19 @@
 import React from "react";
+import { FadingCircle } from "better-react-spinkit";
 
-const MoreButton = ({ onClick }) => {
+const MoreButton = ({ loading, onClick }) => {
+  if (loading) {
+    return (
+      <FadingCircle
+        className="PicturesLoading"
+        color="#faa2c1"
+        size={60}
+      />
+    );
+  }
   return (
     <div className="MoreButton" onClick={onClick}>
-      want some more?
+      more sakura, be more chill..!
     </div>
   );
 };
