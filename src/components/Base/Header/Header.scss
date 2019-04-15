@@ -26,6 +26,7 @@
   }
 }
 .HeaderLogo {
+  text-decoration: none;
   font-size: 1.5rem;
   letter-spacing: 2px;
   color: white;
@@ -50,7 +51,8 @@
 }
 .ProfileButtonWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  align-items: center;
   .ProfileButtonThumbnail {
     cursor: pointer;
     width: 3rem;
@@ -60,5 +62,43 @@
   }
 }
 .ProfileMenuWrapper {
-  color: white;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  z-index: 100;
+  opacity: 0.9;
+  background: white;
+  width: 100%;
+  height: 15rem;
+  .MenuContainer {
+    height: 100%;
+    opacity: 0;
+    animation: .4s appear forwards;
+    .MenuItem {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+      padding: 1rem 0;
+      margin: 0 5%;
+      cursor: pointer;
+      transition: color 0.1s ease-in-out;
+      animation: 0.1s slideIn forwards;
+      > a{
+        text-decoration: none;
+        color: $sakura4;
+      }
+    }
+    .line {
+      width: 90%;
+      height: 1px;
+      background: $sakura4;
+      margin: 0 auto;
+      animation: 1s shrink forwards;
+      
+    }
+  }
 }

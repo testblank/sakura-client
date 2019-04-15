@@ -1,12 +1,13 @@
 import React from "react";
 import "./Header.scss";
+import {Link} from 'react-router-dom'
 
 const Header = ({ children }) => {
   return (
     <div className="HeaderPosition">
       <div className="HeaderBackground">
         <div className="HeaderContents">
-          <div className="HeaderLogo">#SAKURA_POST</div>
+          <Link to="/" className="HeaderLogo">#SAKURA_POST</Link>
           <div className="HeaderSpacer" />
           {children}
         </div>

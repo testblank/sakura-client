@@ -1,0 +1,70 @@
+@import "main.scss";
+
+.ProfileHeaderContent {
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 3rem 5rem;
+  border-bottom: 1px solid rgba(255, 222, 235, 0.8);
+  @include media("860") {
+    padding: 2rem 3rem;
+  }
+  @include media("tablet") {
+    padding: 1.5rem 2rem;
+  }
+  @include media("480") {
+    padding: 1rem 2rem;
+  }
+}
+.PofileHeaderImgWrapper {
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 8px rgba(252, 194, 215, 0.16),
+    0 5px 8px rgba(252, 194, 215, 0.23);
+  @include media("860") {
+    height: 10rem;
+    width: 10rem;
+  }
+  @include media("480") {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+.ProfileHeaderImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.ProfileHeaderText {
+  padding-left: 10rem;
+  @include media("860") {
+    padding-left: 5rem;
+  }
+  @include media("480") {
+    padding-left: 2rem;
+  }
+  .ProfileHeaderName {
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+    @include media("860") {
+      font-size: 2rem;
+      padding-bottom: 1.5rem;
+    }
+    @include media("480") {
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+  .ProfileHeaderPostsCnt {
+    font-size: 2rem;
+    @include media("860") {
+      font-size: 1.5rem;
+    }
+    @include media("480") {
+      font-size: 1rem;
+    }
+  }
+}

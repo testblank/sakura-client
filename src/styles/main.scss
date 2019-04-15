@@ -1,3 +1,13 @@
 @import './sizes';
 @import './colors';
 @import './keyframes';
+
+.body{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+a {
+  text-decoration: none;
+}

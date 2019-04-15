@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import { Home, Auth } from "./pages";
+import { Route, Switch } from "react-router-dom";
+import { Home, Auth, Board, Profile, About } from "./pages";
 import HeaderContainer from "./containers/Base/HeaderContainer";
 
 import storage from "lib/storage";
@@ -38,13 +38,19 @@ class App extends Component {
       height: "3rem",
       padding: ".5rem",
       paddingBottom: "1rem",
-      bottom: '3.5rem'
+      bottom: "3.5rem"
     };
     return (
       <div>
         <HeaderContainer />
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
+        <Switch>
+          <Route path="/board/:username" component={Board} />
+          <Route path="/board" component={Board} />
+        </Switch>
+        <Route path="/profile" component={Profile} />
+        <Route path="/about" component={About} />
         <ScrollUpButton style={btnStyle} />
       </div>
     );
