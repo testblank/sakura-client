@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Home, Auth, Board, Profile, About } from "./pages";
+import { Home, Auth, Posts, Profile, About } from "./pages";
 import HeaderContainer from "./containers/Base/HeaderContainer";
 
 import storage from "lib/storage";
@@ -46,8 +46,8 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <Switch>
-          <Route path="/board/:username" component={Board} />
-          <Route path="/board" component={Board} />
+          <Route path="/posts/:username" component={Posts} />
+          <Route path="/posts" component={Posts} />
         </Switch>
         <Route path="/profile" component={Profile} />
         <Route path="/about" component={About} />

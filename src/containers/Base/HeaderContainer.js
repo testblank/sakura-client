@@ -42,7 +42,7 @@ class HeaderContainer extends Component {
     const {isOpened} = this.state;
     const { handleMenuOpen, handleLogout, handleLinkClick } = this;
     return (
-      <Header>
+      <Header handleLinkClick={handleLinkClick}>
         {user.get("logged") ? (
           <ProfileButton
             username={user.getIn(["loggedInfo", "username"])}
@@ -50,7 +50,7 @@ class HeaderContainer extends Component {
             logout={handleLogout}
             menuToggle={handleMenuOpen}
             isOpened={isOpened}
-            menu={<ProfileMenu handleLinkClick={handleLinkClick}/>}
+            menu={<ProfileMenu handleLogout={handleLogout} handleLinkClick={handleLinkClick}/>}
           />
         ) : (
           <LoginButton />

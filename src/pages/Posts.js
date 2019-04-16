@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Board extends Component {
+export default class Posts extends Component {
   render() {
     return (
       <div>
-        Board
+        Posts
       </div>
     )
   }
