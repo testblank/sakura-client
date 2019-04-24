@@ -25,21 +25,21 @@ class HeaderContainer extends Component {
     window.location.href = "/";
   };
   handleMenuOpen = () => {
-      this.setState({
-        isOpened: !this.state.isOpened
-      });
+    this.setState({
+      isOpened: !this.state.isOpened
+    });
   };
   handleLinkClick = () => {
     this.setState({
       isOpened: false
-    })
-  }
+    });
+  };
   render() {
     const { visible, user } = this.props;
     if (!visible) {
       return null;
     }
-    const {isOpened} = this.state;
+    const { isOpened } = this.state;
     const { handleMenuOpen, handleLogout, handleLinkClick } = this;
     return (
       <Header handleLinkClick={handleLinkClick}>
@@ -50,7 +50,13 @@ class HeaderContainer extends Component {
             logout={handleLogout}
             menuToggle={handleMenuOpen}
             isOpened={isOpened}
-            menu={<ProfileMenu handleLogout={handleLogout} handleLinkClick={handleLinkClick}/>}
+            menu={
+              <ProfileMenu
+                handleLogout={handleLogout}
+                handleLinkClick={handleLinkClick}
+                username={user.getIn(["loggedInfo", "username"])}
+              />
+            }
           />
         ) : (
           <LoginButton />

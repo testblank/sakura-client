@@ -51,7 +51,6 @@
 }
 .ProfileButtonWrapper {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   .ProfileButtonThumbnail {
     cursor: pointer;
@@ -66,14 +65,17 @@
   top: 64px;
   left: 0;
   z-index: 100;
-  opacity: 0.9;
+  opacity: 2;
   background: white;
   width: 100%;
-  height: 15rem;
+  height: 20rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: $shadow1;
   .MenuContainer {
     height: 100%;
     opacity: 0;
-    animation: .4s appear forwards;
+    animation: 0.4s appear forwards;
     .MenuItem {
       height: 100%;
       display: flex;
@@ -87,9 +89,17 @@
       cursor: pointer;
       transition: color 0.1s ease-in-out;
       animation: 0.1s slideIn forwards;
-      > a{
+      > a {
         text-decoration: none;
         color: $sakura4;
+        padding: 0.5rem;
+      }
+      > div {
+        color: $sakura4;
+        padding: 0.5rem;
+        > span {
+          text-decoration: underline;
+        }
       }
     }
     .line {
@@ -98,7 +108,6 @@
       background: $sakura4;
       margin: 0 auto;
       animation: 1s shrink forwards;
-      
     }
   }
 }

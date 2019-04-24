@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Home, Auth, Posts, Profile, About } from "./pages";
 import HeaderContainer from "./containers/Base/HeaderContainer";
 
@@ -43,12 +43,10 @@ class App extends Component {
     return (
       <div>
         <HeaderContainer />
+        {/* <PostContainer /> */}
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
-        <Switch>
-          <Route path="/posts/:username" component={Posts} />
-          <Route path="/posts" component={Posts} />
-        </Switch>
+        <Route path="/posts" component={Posts} />
         <Route path="/profile" component={Profile} />
         <Route path="/about" component={About} />
         <ScrollUpButton style={btnStyle} />
