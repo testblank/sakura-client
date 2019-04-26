@@ -11,6 +11,7 @@ const SEARCH_BY_USERNAME = "posts/SEARCH_BY_USERNAME";
 
 export const changeInput = createAction(CHANGE_INPUT);
 export const initializeForm = createAction(INITIALIZE_FORM);
+// export const getPostList = createAction(GET_POST_LIST);
 export const getPostList = createAction(GET_POST_LIST, PostAPI.getPostsList);
 export const searchByTitle = createAction(
   SEARCH_BY_TITLE,
@@ -23,11 +24,18 @@ export const searchByUsername = createAction(
 
 const initialState = Map({
   list: List([
-    // Map({
-      // title: "",
-      // username: "",
-      // photo: ""
-    // })
+    Map({
+      post: Map({
+        date:"",
+        is_edited:"",
+        photo:"",
+        tags:"",
+        text:"",
+        title:"",
+        _id:"",
+        username:""
+      })
+    })
   ]),
   search: Map({
     title: ""
@@ -51,17 +59,18 @@ const initialState = Map({
 export default handleActions(
   {
     [CHANGE_INPUT]: (state, action) => {
-      const { form, value, name } = action.payload;
-      return state.setIn([form, "form", name], value);
+      // console.log(action);
+      const { value } = action.payload;
+      return state.setIn(['search', 'title'], value);
     },
     [INITIALIZE_FORM]: (state, action) => {
       const initialForm = initialState.get(action.payload);
       return state.set(action.payload, initialForm);
     },
     ...pender({
-      GET_POST_LIST,
+      type: GET_POST_LIST,
       onSuccess: (state, action) => {
-        state.setIn("list", action.payload.data)
+        state.setIn(["list","post"], action.payload.data)
       }
     }),
     ...pender({
