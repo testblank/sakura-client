@@ -8,7 +8,11 @@ export const searchByTitle = title =>
 export const searchByUsername = username =>
   axios.get("/api/posts/search/username" + username);
 // write
-export const writePost = values => axios.post("/api/posts/write/" + values);
+export const writePost = values =>
+  axios.post("/api/posts/write", {
+    headers: { "Content-type": "application/x-www-form-urlencoded" },
+    values
+  });
 // delete
 export const deletePost = id => axios.delete("/api/posts/" + id);
 // update

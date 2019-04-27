@@ -3,6 +3,10 @@ import { writePost } from "../../lib/api/post";
 import { PostWriteButton, PostWriteInput } from "components/Posts";
 
 class PostWrite extends Component {
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
+  }
   state = {
     username: "",
     title: "",
@@ -18,12 +22,19 @@ class PostWrite extends Component {
       username: username
     });
   };
-  handleChange = e => {
+  textChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
+    // console.log(this.state)
   };
+  fileChange = e => {
+    console.log(e.target.files[0]);
+    this.setState({
+      photo: e.target.files[0].name
+    });
+  }
   writePost = async () => {
     const { username, title, text, photo } = this.state;
     if (username === "" || title === "" || text === "") {
@@ -33,15 +44,21 @@ class PostWrite extends Component {
       });
       return;
     }
-    const {newPost} = {
-      username,
-      title,
-      text,
-      photo
-    };
-    console.log(newPost);
+    
+    const newPost = new FormData();
+    newPost.set("username",username);
+    newPost.set("title",title);
+    newPost.set("text",text);
+    newPost.set("photo",photo,photo);
+    // const newPost = {
+    //   username,
+    //   title,
+    //   text,
+    //   photo
+    // };
+    console.log(newPost.get('username'));
     try {
-      await writePost({ newPost });
+      await writePost(newPost);
       this.setState({
         isError: false,
         errMessage: ""
@@ -56,28 +73,31 @@ class PostWrite extends Component {
   };
 
   render() {
-    const { writePost, handleChange } = this;
-    const { title, text, photo, isError, errMessage } = this.state;
+    const { writePost, textChange, fileChange } = this;
+    const { title, text, isError, errMessage } = this.state;
     return (
       <div>
         <PostWriteInput
-          onChange={handleChange}
+          onChange={textChange}
           value={title}
           label="title"
           name="title"
-        />
+          />
         <PostWriteInput
-          onChange={handleChange}
+          onChange={textChange}
           value={text}
           label="text"
           name="text"
-        />
+          />
         <PostWriteInput
-          onChange={handleChange}
-          value={photo}
+          ref={this.fileInput}
+          onChange={fileChange}
+          // value={photo}
+          // name="photo"
           label="photo"
           type="file"
-        />
+          accept="image/*"
+          />
         <div style={{ textAlign: "center", paddingTop: "0", padding: "1rem" }}>
           {isError ? errMessage : null}
         </div>
