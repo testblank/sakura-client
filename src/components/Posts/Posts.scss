@@ -5,11 +5,33 @@
 }
 .PostsSearchInputWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid $sakura2;
   margin: 0 5rem;
-  @include media("480") {
+  @include media("860") {
     margin: 0;
+    flex-direction: column;
+  }
+  .forPosition {
+    width: 10rem;
+  }
+  .writeLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    font-size: 2rem;
+    color: white;
+    background: $sakura3;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    @include media("860") {
+      width: 20rem;
+      margin-bottom: 1rem;
+    }
   }
   .PostsSearchInput {
     // background-color: $sakura1;
@@ -53,16 +75,19 @@
   object-fit: fill;
   object-position: center;
   margin: 2rem;
-  @include media("tablet") {
+  border: 1px solid $sakura1;
+  border-radius: 25px;
+  box-shadow: $shadow1;
+  cursor: pointer;
+  @include media("860") {
     margin: 1rem;
   }
   > img {
     border-radius: 25px;
     width: 100%;
     height: 100%;
-    box-shadow: $shadow1;
     &:hover {
-      filter: blur(1px) brightness(0.8);
+      filter: blur(2px) brightness(0.8);
     }
   }
   .PostInfo {
@@ -76,68 +101,74 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    .PostInfoTitle{
+    .PostInfoTitle {
       font-size: 2rem;
     }
-    .PostInfoUsername{
+    .PostInfoUsername {
       text-decoration: underline;
     }
   }
 }
-
-// import React, { Component } from "react";
-// import "./Posts.scss";
-
-// class Post extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       isVisible: "",
-//       filter: ""
-//     };
-//   }
-//   handleMouseOver = () => {
-//     this.setState({
-//       isVisible: "visible",
-//       filter: `blur(1px) brightness(0.8)`
-//     });
-//   };
-
-//   handleMouseOut = () => {
-//     this.setState({
-//       isVisible: "hidden",
-//       filter: "none"
-//     });
-//   };
-//   render() {
-//     const { isEdited, photo, tags, text, title, username } = this.props;
-//     const { handleMouseOut, handleMouseOver } = this;
-//     const { isVisible, filter } = this.state;
-//     return (
-//       <div
-//         className="Post"
-//         onMouseOut={handleMouseOut}
-//         onMouseOver={handleMouseOver}
-//       >
-//         <div className="PostInfo" style={{ visibility: isVisible }}>
-//           <span className="PostInfoTitle">
-//             {title === "" ? "defaultTitle!" : title}
-//           </span>
-//           <div>
-//             <span className="PostInfoUsername">
-//               {typeof username === "" || null || undefined ? "guest" : username}
-//             </span>
-//             <br />
-//             <span>#{tags === "" ? "defaultTags!" : tags}</span>
-//           </div>
-//         </div>
-//         <img
-//           style={{ filter: filter }}
-//           src={photo}
-//           alt={tags === "" ? "defaultTags!" : tags}
-//         />
-//       </div>
-//     );
-//   }
-// }
-// export default Post;
+.PostWriteInput {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 2rem;
+  @include media("480") {
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+  > span {
+    font-size: 2rem;
+    color: $sakura3;
+    padding-right: 1rem;
+  }
+  > input {
+    width: 20rem;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    height: auto;
+    border: none;
+    box-shadow: $shadow1;
+  }
+  >input[type='file'] {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 18rem;
+    font-size: 1rem;
+    box-shadow: $shadow1;
+    // @include media("480") {
+    //   width: 12rem;
+    // }
+  }
+  > textarea {
+    border: none;
+    border-radius: 25px;
+    width: 20rem;
+    height: 10rem;
+    font-size: 1.5rem;
+    resize: none;
+    box-shadow: $shadow1;
+    @include media("480"){
+      height: 7rem;
+    }
+  }
+}
+.PostWriteButton {
+  width: 20rem;
+  height: 3rem;
+  font-size: 2rem;
+  color: white;
+  background: $sakura4;
+  border-radius: 25px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow1;
+  cursor: pointer;
+  @include media("480"){
+    margin-top: 3rem;
+  }
+}

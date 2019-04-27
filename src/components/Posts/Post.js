@@ -12,23 +12,26 @@ class Post extends Component {
   handleMouseOver = () => {
     this.setState({
       isVisible: "visible",
-      filter: `blur(1px) brightness(0.8)`
+      filter: `blur(2px) brightness(0.8)`
     });
   };
-
   handleMouseOut = () => {
     this.setState({
       isVisible: "hidden",
       filter: "none"
     });
   };
+  handleClick = () => {
+    console.log('clicked')
+  }
   render() {
     const { isEdited, photo, tags, text, title, username } = this.props;
-    const { handleMouseOut, handleMouseOver } = this;
+    const { handleClick, handleMouseOut, handleMouseOver } = this;
     const { isVisible, filter } = this.state;
     return (
       <div
         className="Post"
+        onClick={handleClick}
         onMouseOut={handleMouseOut}
         onMouseOver={handleMouseOver}
       >

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import { Home, Auth, Posts, Profile, About } from "./pages";
+import { Home, Auth, Posts, Profile, About, Write } from "./pages";
 import HeaderContainer from "./containers/Base/HeaderContainer";
 
 import storage from "lib/storage";
@@ -43,10 +43,10 @@ class App extends Component {
     return (
       <div>
         <HeaderContainer />
-        {/* <PostContainer /> */}
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
-        <Route path="/posts" component={Posts} />
+        <Route exact path="/posts" component={Posts} />
+        <Route path="/posts/write" component={Write}/>
         <Route path="/profile" component={Profile} />
         <Route path="/about" component={About} />
         <ScrollUpButton style={btnStyle} />

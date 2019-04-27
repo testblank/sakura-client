@@ -4,12 +4,13 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as postActions from "redux/modules/post";
 import { Post } from "components/Posts";
-import { PostsArrayWrapper } from "../../components/Posts";
+import { PostsArrayWrapper } from "components/Posts";
 
 class PostsList extends Component {
   state = {
     posts: [],
     hover: false,
+    keyword: ""
   };
   getPostList = async () => {
     const { PostActions } = this.props;
@@ -41,13 +42,9 @@ class PostsList extends Component {
   };
 
   handleChange = e => {
-    const { PostActions } = this.props;
     const { name, value } = e.target;
-
-    PostActions.changeInput({
-      name,
-      value,
-      form: "title"
+    this.setState({
+      [name]: value
     });
   };
 
@@ -70,10 +67,9 @@ class PostsList extends Component {
   };
 
   render() {
-    // const isVisible = this.state.hover ? "visible" : "hidden";
-    const { title } = this.props.form.toJS();
-    const { handleChange, handleMouseOut, handleMouseOver } = this;
-    const postsArray = this.state.posts.map(post => (
+    const { keyword, posts } = this.state;
+    const { handleChange } = this;
+    const postsArray = posts.map(post => (
       <Post
         key={post._id}
         date={post.date.created}
@@ -83,21 +79,35 @@ class PostsList extends Component {
         text={post.text}
         title={post.title}
         username={post.username}
-        // onMouseOut={handleMouseOut}
-        // onMouseOver={handleMouseOver}
-        // isVisible={isVisible}
       />
     ));
+    const filter = posts.filter(post => post.title.indexOf(keyword) !== -1);
+    const filteredArray = filter.map(post => (
+      <Post
+        key={post._id}
+        date={post.date.created}
+        isEdited={post.isEdited}
+        photo={post.photo}
+        tags={post.tags}
+        text={post.text}
+        title={post.title}
+        username={post.username}
+      />
+    ));
+
     return (
       <div>
-        <PostsSearchInput
-          onChange={handleChange}
-          value={title}
-          name="keyword"
-          lable=""
-          placeholder="search by title"
+        <div>
+          <PostsSearchInput
+            onChange={handleChange}
+            value={keyword}
+            name="keyword"
+            placeholder="search by title"
+          />
+        </div>
+        <PostsArrayWrapper
+          children={keyword === "" ? postsArray : filteredArray}
         />
-        <PostsArrayWrapper children={postsArray} />
       </div>
     );
   }

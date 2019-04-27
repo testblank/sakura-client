@@ -3,3 +3,4 @@ export { default as Auth } from "./Auth";
 export { default as Posts } from "./Posts";
 export { default as Profile } from "./Profile";
 export { default as About } from "./About";
+export { default as Write } from "./Write";
