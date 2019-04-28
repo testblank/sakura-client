@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import { writePost } from "../../lib/api/post";
+import { writePost as postAPI } from "../../lib/api/post";
 import { PostWriteButton, PostWriteInput } from "components/Posts";
 
 class PostWrite extends Component {
   constructor(props) {
     super(props);
     this.fileInput = React.createRef();
+    this.state = {
+      username: "",
+      title: "",
+      text: "",
+      photo: "",
+      errMessage: "",
+      isError: false
+    };
   }
-  state = {
-    username: "",
-    title: "",
-    text: "",
-    photo: "",
-    errMessage: "",
-    isError: false
-  };
   getUsername = () => {
     const loggedInfo = localStorage.loggedInfo;
     const username = JSON.parse(loggedInfo).username;
@@ -27,16 +27,17 @@ class PostWrite extends Component {
     this.setState({
       [name]: value
     });
-    // console.log(this.state)
   };
   fileChange = e => {
-    console.log(e.target.files[0]);
+    e.persist();
+    const fileName = JSON.stringify(e.target.files[0].name);
     this.setState({
-      photo: e.target.files[0].name
+      photo: fileName
     });
-  }
+  };
   writePost = async () => {
     const { username, title, text, photo } = this.state;
+    console.log(this.state.photo);
     if (username === "" || title === "" || text === "") {
       this.setState({
         isError: true,
@@ -44,21 +45,20 @@ class PostWrite extends Component {
       });
       return;
     }
-    
     const newPost = new FormData();
-    newPost.set("username",username);
-    newPost.set("title",title);
-    newPost.set("text",text);
-    newPost.set("photo",photo,photo);
+    newPost.append("username", username);
+    newPost.append("title", title);
+    newPost.append("text", text);
+    newPost.append("photo", photo, photo.name);
     // const newPost = {
     //   username,
     //   title,
     //   text,
     //   photo
     // };
-    console.log(newPost.get('username'));
+    // console.log(username);
     try {
-      await writePost(newPost);
+      await postAPI({username, title, text, photo});
       this.setState({
         isError: false,
         errMessage: ""
@@ -77,31 +77,36 @@ class PostWrite extends Component {
     const { title, text, isError, errMessage } = this.state;
     return (
       <div>
-        <PostWriteInput
-          onChange={textChange}
-          value={title}
-          label="title"
-          name="title"
+        {/* <form onSubmit={writePost}> */}
+          <PostWriteInput
+            onChange={textChange}
+            value={title}
+            label="title"
+            name="title"
           />
-        <PostWriteInput
-          onChange={textChange}
-          value={text}
-          label="text"
-          name="text"
+          <PostWriteInput
+            onChange={textChange}
+            value={text}
+            label="text"
+            name="text"
           />
-        <PostWriteInput
-          ref={this.fileInput}
-          onChange={fileChange}
-          // value={photo}
-          // name="photo"
-          label="photo"
-          type="file"
-          accept="image/*"
+          <PostWriteInput
+            ref={this.fileInput}
+            onChange={fileChange}
+            // value={photo}
+            // name="photo"
+            label="photo"
+            type="file"
+            accept="image/*"
           />
-        <div style={{ textAlign: "center", paddingTop: "0", padding: "1rem" }}>
-          {isError ? errMessage : null}
-        </div>
-        <PostWriteButton handleClick={writePost} />
+          <div
+            style={{ textAlign: "center", paddingTop: "0", padding: "1rem" }}
+          >
+            {isError ? errMessage : null}
+          </div>
+          {/* <input type="submit" value="submit" /> */}
+          <PostWriteButton handleClick={writePost} />
+        {/* </form> */}
       </div>
     );
   }
